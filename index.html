@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">Rayyan</a>
+            <a href="#home" class="nav-logo">🤖 Rayyan</a>
             <ul class="nav-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -18,11 +18,15 @@
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-content">
+            <div class="hero-icon">🧠</div>
             <h1 class="hero-title">Rayyan</h1>
             <p class="hero-subtitle">AI Specialist</p>
             <p class="hero-description">Building intelligent systems that solve real-world problems</p>
@@ -31,14 +35,33 @@
                 <a href="#contact" class="btn btn-secondary">Get in Touch</a>
             </div>
         </div>
+        <div class="hero-visual">
+            <div class="ai-orb"></div>
+            <div class="ai-particles">
+                <span class="particle">⚡</span>
+                <span class="particle">🔮</span>
+                <span class="particle">💡</span>
+                <span class="particle">🎯</span>
+                <span class="particle">⭐</span>
+                <span class="particle">🚀</span>
+            </div>
+        </div>
     </section>
 
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <p>I'm an upcoming AI specialist passionate about leveraging machine learning and artificial intelligence to create innovative solutions. With a strong foundation in data science and deep learning, I focus on building systems that are both powerful and practical.</p>
-                <p>My expertise spans across natural language processing, computer vision, and predictive modeling. I'm constantly exploring new technologies and methodologies to stay at the forefront of AI development.</p>
+                <div class="about-image">
+                    <div class="ai-avatar">
+                        <span class="avatar-icon">🤖</span>
+                        <div class="avatar-ring"></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>I'm an upcoming AI specialist passionate about leveraging machine learning and artificial intelligence to create innovative solutions. With a strong foundation in data science and deep learning, I focus on building systems that are both powerful and practical.</p>
+                    <p>My expertise spans across natural language processing, computer vision, and predictive modeling. I'm constantly exploring new technologies and methodologies to stay at the forefront of AI development.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -48,6 +71,7 @@
             <h2 class="section-title">Skills & Technologies</h2>
             <div class="skills-grid">
                 <div class="skill-card">
+                    <div class="skill-icon">🧠</div>
                     <h3>Machine Learning</h3>
                     <ul>
                         <li>Supervised & Unsupervised Learning</li>
@@ -57,6 +81,7 @@
                     </ul>
                 </div>
                 <div class="skill-card">
+                    <div class="skill-icon">🛠️</div>
                     <h3>Frameworks & Tools</h3>
                     <ul>
                         <li>TensorFlow & Keras</li>
@@ -66,6 +91,7 @@
                     </ul>
                 </div>
                 <div class="skill-card">
+                    <div class="skill-icon">💻</div>
                     <h3>Programming</h3>
                     <ul>
                         <li>Python</li>
@@ -75,6 +101,7 @@
                     </ul>
                 </div>
                 <div class="skill-card">
+                    <div class="skill-icon">🎯</div>
                     <h3>AI Domains</h3>
                     <ul>
                         <li>Natural Language Processing</li>
@@ -92,6 +119,7 @@
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
+                    <div class="project-icon">💬</div>
                     <h3>Sentiment Analysis System</h3>
                     <p>Built a deep learning model to analyze customer sentiment from social media data with 92% accuracy.</p>
                     <div class="project-tech">
@@ -105,6 +133,7 @@
                     </div>
                 </div>
                 <div class="project-card">
+                    <div class="project-icon">🔬</div>
                     <h3>Image Classification Model</h3>
                     <p>Developed a CNN-based image classifier for medical imaging, achieving high precision in disease detection.</p>
                     <div class="project-tech">
@@ -118,6 +147,7 @@
                     </div>
                 </div>
                 <div class="project-card">
+                    <div class="project-icon">🤖</div>
                     <h3>Chatbot Assistant</h3>
                     <p>Created an intelligent chatbot using transformer models to provide automated customer support.</p>
                     <div class="project-tech">
