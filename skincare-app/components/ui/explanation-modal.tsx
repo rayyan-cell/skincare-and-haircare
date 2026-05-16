@@ -34,7 +34,7 @@ export function ExplanationModal({ isOpen, onClose, title, content }: Explanatio
           >
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-2">
-                <HelpCircle className="w-6 h-6 text-purple-500" />
+                <HelpCircle className="w-6 h-6 text-primary" />
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                   {title}
                 </h3>
@@ -53,7 +53,7 @@ export function ExplanationModal({ isOpen, onClose, title, content }: Explanatio
 
             <button
               onClick={onClose}
-              className="mt-6 w-full py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-full hover:shadow-lg transition-all"
+              className="mt-6 w-full py-3 bg-gradient-to-r from-primary to-primary-light text-white font-semibold rounded-full hover:shadow-lg transition-all"
             >
               Got it!
             </button>

@@ -1,14 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, User, LogOut } from 'lucide-react';
 import { ThemeToggle } from './ui/theme-toggle';
+import { useSession, signIn, signOut } from "next-auth/react";
 
 interface HeaderProps {
   onNavigate?: (section: string) => void;
 }
 
 export function Header({ onNavigate }: HeaderProps) {
+  const { data: session } = useSession();
+  
   const handleNavClick = (section: string) => {
     if (onNavigate) {
       onNavigate(section);
@@ -30,11 +33,11 @@ export function Header({ onNavigate }: HeaderProps) {
             onClick={() => handleNavClick('home')}
             className="flex items-center space-x-2 cursor-pointer"
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-500 flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary via-primary-light to-secondary flex items-center justify-center shadow-lg">
               <Sparkles className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+              <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-primary-light to-secondary bg-clip-text text-transparent">
                 GlowGuide
               </h1>
               <p className="text-xs text-gray-600 dark:text-gray-400">
@@ -47,33 +50,69 @@ export function Header({ onNavigate }: HeaderProps) {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => handleNavClick('home')}
-              className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors font-medium"
+              className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-secondary-light transition-colors font-medium"
             >
               Home
             </button>
             <button
               onClick={() => handleNavClick('quiz')}
-              className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors font-medium"
+              className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-secondary-light transition-colors font-medium"
             >
               Take Quiz
             </button>
             <button
               onClick={() => handleNavClick('blog')}
-              className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors font-medium"
+              className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-secondary-light transition-colors font-medium"
             >
               Blog
             </button>
             <button
               onClick={() => handleNavClick('about')}
-              className="text-gray-700 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-400 transition-colors font-medium"
+              className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-secondary-light transition-colors font-medium"
             >
               About
             </button>
           </nav>
 
-          {/* Theme Toggle */}
+          {/* Theme Toggle & Auth */}
           <div className="flex items-center space-x-4">
             <ThemeToggle />
+            
+            {session ? (
+              <div className="flex items-center space-x-3">
+                <div className="flex flex-col items-end hidden sm:flex">
+                  <span className="text-xs font-semibold text-gray-900 dark:text-white">
+                    {session.user?.name}
+                  </span>
+                  <button 
+                    onClick={() => signOut()}
+                    className="text-[10px] text-primary dark:text-secondary hover:underline flex items-center"
+                  >
+                    <LogOut className="w-2 h-2 mr-1" />
+                    Sign Out
+                  </button>
+                </div>
+                {session.user?.image ? (
+                  <img 
+                    src={session.user.image} 
+                    alt="User" 
+                    className="w-8 h-8 rounded-full border-2 border-primary/20"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center border-2 border-primary/20">
+                    <User className="w-4 h-4 text-primary" />
+                  </div>
+                )}
+              </div>
+            ) : (
+              <button
+                onClick={() => signIn('google')}
+                className="px-4 py-2 bg-primary text-white text-sm font-bold rounded-full hover:bg-primary-light transition-all shadow-md flex items-center space-x-2"
+              >
+                <User className="w-4 h-4" />
+                <span className="hidden sm:inline">Sign In</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

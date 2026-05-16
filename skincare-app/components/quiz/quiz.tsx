@@ -125,7 +125,7 @@ export function Quiz({ onComplete }: QuizProps) {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20 py-20 px-4">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-white to-gray-50 dark:from-gray-950 dark:via-primary/10 dark:to-gray-900 py-20 px-4">
       <div className="max-w-2xl w-full">
         {/* Progress bar */}
         <div className="mb-8">
@@ -133,7 +133,7 @@ export function Quiz({ onComplete }: QuizProps) {
             <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
               Step {step + 1} of {steps.length}
             </span>
-            <span className="text-sm font-medium text-purple-600 dark:text-purple-400">
+            <span className="text-sm font-medium text-primary dark:text-secondary-light">
               {Math.round(((step + 1) / steps.length) * 100)}%
             </span>
           </div>
@@ -142,7 +142,7 @@ export function Quiz({ onComplete }: QuizProps) {
               initial={{ width: 0 }}
               animate={{ width: `${((step + 1) / steps.length) * 100}%` }}
               transition={{ duration: 0.5 }}
-              className="h-full bg-gradient-to-r from-pink-500 to-purple-500"
+              className="h-full bg-gradient-to-r from-primary to-primary-light"
             />
           </div>
         </div>
@@ -153,7 +153,7 @@ export function Quiz({ onComplete }: QuizProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8"
+          className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 border border-primary/10"
         >
           <div className="flex items-start justify-between mb-6">
             <div>
@@ -167,9 +167,9 @@ export function Quiz({ onComplete }: QuizProps) {
             {currentStep.explanation && (
               <button
                 onClick={() => setShowExplanation(true)}
-                className="p-2 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors"
+                className="p-2 rounded-full hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-colors"
               >
-                <HelpCircle className="w-6 h-6 text-purple-500" />
+                <HelpCircle className="w-6 h-6 text-primary" />
               </button>
             )}
           </div>
@@ -179,12 +179,12 @@ export function Quiz({ onComplete }: QuizProps) {
             <div className="space-y-4">
               <textarea
                 placeholder="e.g., I use a basic cleanser and moisturizer..."
-                className="w-full h-32 px-4 py-3 rounded-2xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:border-purple-500 focus:outline-none resize-none"
+                className="w-full h-32 px-4 py-3 rounded-2xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:border-primary focus:outline-none resize-none"
                 onChange={(e) => setProfile({ ...profile, currentRoutine: e.target.value })}
               />
               <button
                 onClick={() => handleNext(profile.currentRoutine)}
-                className="w-full py-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-full hover:shadow-lg transition-all flex items-center justify-center space-x-2"
+                className="w-full py-4 bg-gradient-to-r from-primary to-primary-light text-white font-semibold rounded-full hover:shadow-lg transition-all flex items-center justify-center space-x-2"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-5 h-5" />
@@ -199,19 +199,19 @@ export function Quiz({ onComplete }: QuizProps) {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleNext(option.value)}
-                  className="p-6 rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 bg-white dark:bg-gray-900 transition-all text-left group"
+                  className="p-6 rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary bg-white dark:bg-gray-900 transition-all text-left group"
                 >
                   <div className="flex items-center space-x-4">
                     <span className="text-4xl">{option.emoji}</span>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-secondary-light transition-colors">
                         {option.label}
                       </h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
                         {option.description}
                       </p>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-purple-500 transition-colors" />
+                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors" />
                   </div>
                 </motion.button>
               ))}
@@ -223,7 +223,7 @@ export function Quiz({ onComplete }: QuizProps) {
             {step > 0 ? (
               <button
                 onClick={handleBack}
-                className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-secondary-light transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />
                 <span>Back</span>
@@ -234,7 +234,7 @@ export function Quiz({ onComplete }: QuizProps) {
             {currentStep.isTextInput && (
               <button
                 onClick={() => handleNext('')}
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-secondary-light transition-colors"
               >
                 Skip
               </button>

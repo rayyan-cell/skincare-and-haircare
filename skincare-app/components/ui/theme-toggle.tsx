@@ -18,25 +18,37 @@ export function ThemeToggle() {
     );
   }
 
+  const toggleTheme = () => {
+    const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+    console.log('Manually switching theme to:', newTheme);
+    setTheme(newTheme);
+    
+    // Fallback: manually toggle class if next-themes fails
+    if (typeof document !== 'undefined') {
+      const html = document.documentElement;
+      if (newTheme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    }
+  };
+
   return (
     <button
-      onClick={() => {
-        const newTheme = theme === 'dark' ? 'light' : 'dark';
-        console.log('Switching theme from', theme, 'to', newTheme);
-        setTheme(newTheme);
-      }}
-      className="relative w-14 h-8 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 dark:from-indigo-600 dark:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+      onClick={toggleTheme}
+      className="relative w-14 h-8 rounded-full bg-gradient-to-r from-primary to-primary-light dark:from-secondary dark:to-secondary-light transition-all duration-300 shadow-lg hover:shadow-xl"
       aria-label="Toggle theme"
     >
       <div
         className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white dark:bg-gray-900 transition-transform duration-300 flex items-center justify-center ${
-          theme === 'dark' ? 'translate-x-6' : 'translate-x-0'
+          resolvedTheme === 'dark' ? 'translate-x-6' : 'translate-x-0'
         }`}
       >
-        {theme === 'dark' ? (
-          <Moon className="w-4 h-4 text-purple-400" />
+        {resolvedTheme === 'dark' ? (
+          <Moon className="w-4 h-4 text-secondary" />
         ) : (
-          <Sun className="w-4 h-4 text-orange-400" />
+          <Sun className="w-4 h-4 text-primary" />
         )}
       </div>
     </button>
