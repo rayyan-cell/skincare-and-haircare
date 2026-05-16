@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Reminder App</title>
+    <link rel="stylesheet" href="reminders.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Task Reminder App</h1>
+            <p>Stay organized and never miss a deadline</p>
+        </header>
+
+        <section class="add-reminder">
+            <h2>Create New Reminder</h2>
+            <form id="reminderForm">
+                <div class="form-group">
+                    <label for="reminderTitle">Title</label>
+                    <input type="text" id="reminderTitle" placeholder="Enter reminder title" required>
+                </div>
+                <div class="form-group">
+                    <label for="reminderDate">Due Date</label>
+                    <input type="datetime-local" id="reminderDate" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Reminder</button>
+            </form>
+        </section>
+
+        <section class="reminders-list">
+            <h2>Your Reminders</h2>
+            <div id="remindersList" class="reminders-container">
+                <p class="empty-state">No reminders yet. Create one above!</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="reminders.js"></script>
+</body>
+</html>
