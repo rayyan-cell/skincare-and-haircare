@@ -30,13 +30,25 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.classList.toggle('dark', theme === 'dark');
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 antialiased">
         <AuthProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem={false}
-            disableTransitionOnChange
+            storageKey="theme"
           >
             {children}
           </ThemeProvider>
